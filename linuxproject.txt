@@ -1,0 +1,308 @@
+Final Project Output
+
+---SYSTEM & HOST INFO---
+
+     Static hostname: matt.slaunwhite.com
+           Icon name: computer-vm
+             Chassis: vm 🖴
+   Chassis Asset Tag: 1245-2163-4581-0498-0357-3304-00
+          Machine ID: 5bcc021f628d40709149241b56967cc3
+             Boot ID: 37cffc8ce1cc4a51a99daac49407c03c
+        Product UUID: a7d1ccc9-0d52-4fc1-8474-ab11cf2b30ef
+      Virtualization: microsoft
+    Operating System: Fedora Linux 44 (Workstation Edition)
+         CPE OS Name: cpe:/o:fedoraproject:fedora:44
+      OS Support End: Wed 2027-05-19
+OS Support Remaining: 6month 3w 5d
+              Kernel: Linux 6.19.10-300.fc44.x86_64
+        Architecture: x86-64
+     Hardware Vendor: Microsoft Corporation
+      Hardware Model: Virtual Machine
+     Hardware Serial: 1245-2163-4581-0498-0357-3304-00
+        Hardware SKU: None
+    Hardware Version: Hyper-V UEFI Release v4.1
+    Firmware Version: Hyper-V UEFI Release v4.1
+       Firmware Date: Thu 2025-09-25
+        Firmware Age: 1y 3w 5d
+
+
+---FILESYSTEM CONFIG---
+
+
+Mounted filesystems:
+
+NAME   FSTYPE FSVER LABEL  UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+sda                                                                            
+├─sda1 vfat   FAT32        1DE5-41F4                             578.8M     3% /boot/efi
+├─sda2 ext4   1.0          43d163da-8a6f-49f8-9ce1-6b6bc0ffc303    1.4G    18% /boot
+└─sda3 btrfs        fedora e048d5bc-44a5-4d2a-a7fa-b16a77334af2    117G     5% /home
+                                                                               /
+sdb                                                                            
+├─sdb1 ext4   1.0          9985c2bf-0ff9-461d-bd63-612288da7973   27.8G     0% /data1
+└─sdb2 xfs                 da0b3c60-b1b6-44fc-a508-7761ab257194   19.5G     2% /data2
+sr0                                                                            
+zram0  swap   1     zram0  ca8cb941-a610-4b60-8d1d-9fc223de37ce                [SWAP]
+
+/etc/fstab output:
+
+
+#
+# /etc/fstab
+# Created by anaconda on Wed Oct 21 12:14:08 2026
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+UUID=e048d5bc-44a5-4d2a-a7fa-b16a77334af2 / btrfs subvol=root,compress=zstd:1 0 0
+UUID=43d163da-8a6f-49f8-9ce1-6b6bc0ffc303 /boot ext4 defaults 1 2
+UUID=1DE5-41F4 /boot/efi vfat umask=0077,shortname=winnt 0 2
+UUID=e048d5bc-44a5-4d2a-a7fa-b16a77334af2 /home btrfs subvol=home,compress=zstd:1 0 0
+UUID=9985c2bf-0ff9-461d-bd63-612288da7973 /data1 ext4 defaults 0 2
+UUID=da0b3c60-b1b6-44fc-a508-7761ab257194 /data2 xfs defaults 0 0
+
+Contents of /data1:
+
+total 20
+drwxr-xr-x. 3 root root  4096 Oct 21 10:07 gitstuff
+drwx------  2 root root 16384 Oct 21 10:06 lost+found
+
+Contents of /data2:
+
+total 0
+drwxr-xr-x. 4 root root 98 Apr 22 11:04 ssh
+
+
+---DNF AND UPDATE HISTORY---
+
+ID Command line                           Date and time       Action(s) Altered
+ 4 dnf install -y vsftpd                  2026-10-21 13:08:01                 1
+ 3 dnf install -y httpd mod_ssl           2026-10-21 13:07:44                 1
+ 2 dnf5 --config /kiwi_dnf5.config -y --d 2026-04-22 14:00:43              1721
+ 1 dnf5 --config /builddir/result/image/b 2026-04-22 13:58:52               278
+
+
+---SHELL, FILE, AND SYSTEM OPERATIONS---
+
+
+Contents of /data1/gitstuff/baseline.txt:
+
+procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st gu
+ 5  0 151584 127176   6532 1427092   1   59  1229  1322  771    6  3  2 95  0  0  0
+
+Contents of /data1/gitstuff/sshconfigs.txt:
+
+/etc/ssh/sshd_config
+/data2/ssh/sshd_config
+New line added by Matt Slaunwhite
+
+Contents of /data1/gitstuff/bluetooth.txt:
+
+Oct 21 09:16:05 fedora NetworkManager[1029]: <info>  [1792584965.6480] Loaded device plugin: NMBluezManager (/usr/lib64/NetworkManager/1.56.0-1.fc44/libnm-device-plugin-bluetooth.so)
+Oct 21 09:17:16 localhost-live.mshome.net systemd[1]: bluetooth.service - Bluetooth service skipped, unmet condition check ConditionPathIsDirectory=/sys/class/bluetooth
+Oct 21 09:19:06 matt.slaunwhite.com NetworkManager[1021]: <info>  [1792585146.8947] Loaded device plugin: NMBluezManager (/usr/lib64/NetworkManager/1.56.0-1.fc44/libnm-device-plugin-bluetooth.so)
+Oct 21 09:19:56 matt.slaunwhite.com systemd[1]: bluetooth.service - Bluetooth service skipped, unmet condition check ConditionPathIsDirectory=/sys/class/bluetooth
+Oct 21 09:24:12 matt.slaunwhite.com dnf5daemon-server[3086]: 2026-10-21T12:24:12+0000 [3086] DEBUG Implicitly added element NetworkManager-bluetooth-1:1.56.0-1.fc44.x86_64 type remove package (caused by NetworkManager-bluetooth-1:1.56.1-2.fc44.x86_64)
+Oct 21 09:24:13 matt.slaunwhite.com dnf5daemon-server[3086]: 2026-10-21T12:24:13+0000 [3086] DEBUG Implicitly added element gnome-bluetooth-1:47.1-4.fc44.x86_64 type remove package (caused by gnome-bluetooth-1:47.2-1.fc44.x86_64)
+Oct 21 09:24:13 matt.slaunwhite.com dnf5daemon-server[3086]: 2026-10-21T12:24:13+0000 [3086] DEBUG Implicitly added element gnome-bluetooth-libs-1:47.1-4.fc44.x86_64 type remove package (caused by gnome-bluetooth-libs-1:47.2-1.fc44.x86_64)
+Oct 21 09:24:14 matt.slaunwhite.com dnf5daemon-server[3086]: 2026-10-21T12:24:14+0000 [3086] INFO RPM callback open file "/var/lib/dnf/offline/packages/iwlbluetooth-firmware-20260916-1.fc44.noarch.rpm"
+Oct 21 09:24:15 matt.slaunwhite.com dnf5daemon-server[3086]: 2026-10-21T12:24:15+0000 [3086] INFO RPM callback open file "/var/lib/dnf/offline/packages/gnome-bluetooth-libs-47.2-1.fc44.x86_64.rpm"
+Oct 21 09:24:16 matt.slaunwhite.com dnf5daemon-server[3086]: 2026-10-21T12:24:16+0000 [3086] INFO RPM callback open file "/var/lib/dnf/offline/packages/gnome-bluetooth-47.2-1.fc44.x86_64.rpm"
+
+Git commits:
+
+commit 27987363792d203bb4b52fac01f4f97e1c85cec6
+Author: Matt Slaunwhite <matt@slaunwhite.com>
+Date:   Wed Oct 21 10:07:21 2026 -0300
+
+    Commit 2
+
+commit d7b29cb29b52cc25b739c5ac794c04cc3b05f835
+Author: Matt Slaunwhite <matt@slaunwhite.com>
+Date:   Wed Oct 21 10:07:21 2026 -0300
+
+    Commit 1
+
+Contents of last commit:
+
+commit 27987363792d203bb4b52fac01f4f97e1c85cec6
+Author: Matt Slaunwhite <matt@slaunwhite.com>
+Date:   Wed Oct 21 10:07:21 2026 -0300
+
+    Commit 2
+
+diff --git a/sshconfigs.txt b/sshconfigs.txt
+index e39ea6e..15d9eb1 100644
+--- a/sshconfigs.txt
++++ b/sshconfigs.txt
+@@ -1,2 +1,3 @@
+ /etc/ssh/sshd_config
+ /data2/ssh/sshd_config
++New line added by Matt Slaunwhite
+
+Alias definition:
+
+alias cls='clear'
+
+Contents of gitstuff tar backup (omitting .git):
+
+drwxr-xr-x root/root         0 2026-10-21 10:07 gitstuff/
+-rw-r--r-- root/root        78 2026-10-21 10:07 gitstuff/sshconfigs.txt
+-rw-r--r-- root/root       252 2026-10-21 10:07 gitstuff/baseline.txt
+-rw-r--r-- root/root      3021 2026-10-21 10:07 gitstuff/bluetooth.txt
+
+Root user crontab:
+
+45 21 * * 5 tar -czf /gitstuff-backup.tar.gz -C /data1 gitstuff
+
+Bob user entry in /etc/shadow (displaying password hash):
+
+bob:$y$j9T$RAKfzTYpKvhuyq1tepAJM/$0f/T2PpIfGCFaMSUKXGV9s0NWGmz7utOxA96mRfICq6:20747:0:99999:7:::
+
+Members of the wheel group:
+
+wheel:x:10:woot,bob
+
+Owner and permissions on /data1/gitstuff/bluetooth.txt:
+
+-r--------. 1 bob bob 3021 Oct 21 10:07 /data1/gitstuff/bluetooth.txt
+
+Attributes on /data1/gitstuff/bluetooth.txt:
+
+-----a--------e------- /data1/gitstuff/bluetooth.txt
+
+
+---SSH CONFIG---
+
+
+Service status:
+
+● sshd.service - OpenSSH server daemon
+     Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─10-timeout-abort.conf
+     Active: active (running) since Wed 2026-10-21 10:07:32 ADT; 3min 30s ago
+ Invocation: ce7bf99be8fe4049924d7bc6f1bc48e7
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 6664 (sshd)
+      Tasks: 1 (limit: 4619)
+     Memory: 1.1M (peak: 1.4M, swap: 80K, swap peak: 80K)
+        CPU: 6ms
+     CGroup: /system.slice/sshd.service
+             └─6664 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
+Oct 21 10:07:31 matt.slaunwhite.com systemd[1]: Starting sshd.service - OpenSSH server daemon...
+Oct 21 10:07:32 matt.slaunwhite.com sshd[6664]: Server listening on 0.0.0.0 port 22.
+Oct 21 10:07:32 matt.slaunwhite.com systemd[1]: Started sshd.service - OpenSSH server daemon.
+Oct 21 10:07:32 matt.slaunwhite.com sshd[6664]: Server listening on :: port 22.
+
+Root logins allowed:
+
+#PermitRootLogin prohibit-password
+# the setting of "PermitRootLogin prohibit-password".
+
+Root login connection established:
+
+
+
+---APACHE CONFIG---
+
+
+Service status:
+
+● httpd.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─10-timeout-abort.conf
+     Active: active (running) since Wed 2026-10-21 10:07:48 ADT; 3min 14s ago
+ Invocation: 76371827deef4faca38d14a585fe5e4e
+       Docs: man:httpd.service(8)
+   Main PID: 7085 (httpd)
+     Status: "Total requests: 0; Idle/Busy workers 100/0;Requests/sec: 0; Bytes served/sec:   0 B/sec"
+      Tasks: 178 (limit: 4619)
+     Memory: 19.6M (peak: 20.5M)
+        CPU: 153ms
+     CGroup: /system.slice/httpd.service
+             ├─7085 /usr/sbin/httpd -DFOREGROUND
+             ├─7089 /usr/sbin/httpd -DFOREGROUND
+             ├─7090 /usr/sbin/httpd -DFOREGROUND
+             ├─7091 /usr/sbin/httpd -DFOREGROUND
+             ├─7092 /usr/sbin/httpd -DFOREGROUND
+             └─7093 /usr/sbin/httpd -DFOREGROUND
+
+Oct 21 10:07:48 matt.slaunwhite.com systemd[1]: Starting httpd.service - The Apache HTTP Server...
+Oct 21 10:07:48 matt.slaunwhite.com (httpd)[7085]: httpd.service: Referenced but unset environment variable evaluates to an empty string: OPTIONS
+Oct 21 10:07:48 matt.slaunwhite.com httpd[7085]: Server configured, listening on: port 443, port 80
+Oct 21 10:07:48 matt.slaunwhite.com systemd[1]: Started httpd.service - The Apache HTTP Server.
+
+Default web page:
+
+Default Apache Page from Matt Slaunwhite
+
+Web page hits:
+
+::1 - - [21/Oct/2026:10:11:03 -0300] "GET / HTTP/1.1" 200 41 "-" "curl/8.18.0" PID: 7092 140312420808384 0
+
+
+---VSFTPD CONFIG---
+
+
+Service status:
+
+● vsftpd.service - Vsftpd ftp daemon
+     Loaded: loaded (/usr/lib/systemd/system/vsftpd.service; enabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─10-timeout-abort.conf
+     Active: active (running) since Wed 2026-10-21 10:08:03 ADT; 2min 59s ago
+ Invocation: b257f85521f54edb8a1f1aa969f21b5b
+    Process: 7767 ExecStart=/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf (code=exited, status=0/SUCCESS)
+   Main PID: 7768 (vsftpd)
+      Tasks: 1 (limit: 4619)
+     Memory: 796K (peak: 1.4M, swap: 44K, swap peak: 44K)
+        CPU: 3ms
+     CGroup: /system.slice/vsftpd.service
+             └─7768 /usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+
+Oct 21 10:08:03 matt.slaunwhite.com systemd[1]: Starting vsftpd.service - Vsftpd ftp daemon...
+Oct 21 10:08:03 matt.slaunwhite.com systemd[1]: Started vsftpd.service - Vsftpd ftp daemon.
+
+Anonymous connections allowed:
+
+anonymous_enable=YES
+
+Project uploaded to /home/woot/Documents:
+
+total 0
+
+
+---FIREWALL CONFIG---
+
+FedoraWorkstation (default, active)
+  target: default
+  ingress-priority: 0
+  egress-priority: 0
+  icmp-block-inversion: no
+  interfaces: eth0
+  sources: 
+  services: dhcpv6-client ftp http https samba-client ssh
+  ports: 1025-65535/udp 1025-65535/tcp
+  protocols: 
+  forward: yes
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+```[cite: 1]
+
+<FollowUp label="Need help preparing the final submission files for Brightspace?" query="What are the exact submission requirements and file names for the Assignment 2 dropbox?"/>
+
+<ElicitationsGroup message="Next steps:">
+  <Elicitation label="Did you fix the document & SSH root items?" query="How do I verify if the document in Documents and PermitRootLogin will pass before submitting?"/>
+  <Elicitation label="Screenshot naming & format" query="What are the required dimensions, format, and filename for the desktop screenshot?"/>
+  <Elicitation label="Save file locally via PowerShell" query="How can I create the linuxproject.txt file directly in Windows PowerShell?"/>
+</ElicitationsGroup>
